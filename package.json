@@ -1,0 +1,28 @@
+{
+  "name": "scrum-server",
+  "version": "1.0.0",
+  "description": "scrum project server",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js",
+    "start": "nodemon server.js",
+    "deploy": "git add . && git commit -m \"Deploy to heroku\" && git push heroku master",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.5.0",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.1",
+    "morgan": "^1.9.0",
+    "serve-favicon": "^2.5.0"
+  }
+}
