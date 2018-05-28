@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "deploy": "git add . && git commit -m \"Deploy to heroku\" && git push heroku master",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

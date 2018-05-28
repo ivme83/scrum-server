@@ -15,8 +15,8 @@ mongoose.connect(MONGODB_URI, { promiseLibrary: require('bluebird') })
   .then(() => console.log('connection succesful'))
   .catch((err) => console.error(err));
 
-const userRoutes           = require('./routes/userRoutes');
-const classRoutes           = require('./routes/classRoutes');
+const userRoutes      = require('./routes/userRoutes');
+const classRoutes     = require('./routes/classRoutes');
 const app             = express();
 
 app.use(cors());
