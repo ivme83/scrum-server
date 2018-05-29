@@ -61,6 +61,7 @@ router.post("/getClasses", (req, res) => {
                     // If an error occurs, send it back to the client
                     res.json(err);
                 });
+        }
 
         });
 });
@@ -74,7 +75,7 @@ router.post("/addClass", (req, res) => {
             db.Student.findOneAndUpdate({ user_id: foundUser._id }, { $push: { classes: foundClass._id } }, { new: true }, (err, updated) => {
                 if (err) return next(err);
                 console.log(updated);
-                res.json(newClass);
+                res.json(foundClass);
             });
         });
     });
