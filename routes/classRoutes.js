@@ -72,10 +72,12 @@ router.post("/addClass", (req, res) => {
 
     db.Class.findOne({class_code: class_code}, (err, foundClass) => {
         db.User.findOne({ fbuid: fbuid }, (err, foundUser) => {
-            db.Student.findOneAndUpdate({ user_id: foundUser._id }, { $push: { classes: foundClass._id } }, { new: true }, (err, updated) => {
-                if (err) return next(err);
-                console.log(updated);
-                res.json(foundClass);
+            db.Student.findOneAndUpdate({ user_id: foundUser._id }, { $push: { classes: foundClass._id } }, { new: true }, (err, updatedStudent) => {
+                db.Class.findOneAndUpdate({ _id: foundClass._id }, { $push: { students: updatedStudent._id } }, { new: true }, (err, updatedClass) => {
+                    if (err) return next(err);
+                    // console.log(updated);
+                    res.json(updatedClass);
+                });
             });
         });
     });
