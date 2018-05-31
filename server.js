@@ -17,6 +17,7 @@ mongoose.connect(MONGODB_URI, { promiseLibrary: require('bluebird') })
 
 const userRoutes      = require('./routes/userRoutes');
 const classRoutes     = require('./routes/classRoutes');
+const projectRoutes   = require('./routes/projectRoutes');
 const app             = express();
 
 app.use(cors());
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/api/user', userRoutes);
 app.use('/api/class', classRoutes);
+app.use('/api/project', projectRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

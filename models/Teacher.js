@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const TeacherSchema = new Schema({
-  user_id: {
+  user: {
+    ref: "User",
     type: String,
     unique: true,
     require: true

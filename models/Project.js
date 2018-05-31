@@ -9,6 +9,10 @@ const ProjectSchema = new Schema({
   description: {
     type: String,
     require: true
+  },
+  project_code: {
+    type: String,
+    require: true
   }
 });
 
