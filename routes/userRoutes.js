@@ -13,6 +13,22 @@ router.post('/getUser', (req, res) => {
   });
 });
 
+router.post('/getStudent', (req, res) => {
+  let user = req.body.user;
+
+  db.Student.findOne({ 'user': user })
+    .populate({ path: "user", model: "User" })
+    .populate("classes")
+    .populate("projects")
+    .then(studentInfo => {
+      res.json(studentInfo);
+    })
+    .catch(function (err) {
+      // If an error occurs, send it back to the client
+      res.json(err);
+    });
+});
+
 router.post('/', (req, res) => {
   db.User.create(req.body, (err, newUser) => {
     if (err) return next(err);
@@ -31,6 +47,7 @@ router.post('/', (req, res) => {
     
     res.json(newUser);
   });
+
 });
 
 module.exports = router;
