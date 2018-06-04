@@ -4,7 +4,7 @@ const mongoose        = require('mongoose');
 const db              = require("../models");
 
 
-router.post('/addProject', (req, res) => {
+router.post('/createProject', (req, res) => {
     let newProjectData = {
         name: req.body.project_name,
         description: req.body.description,
@@ -23,6 +23,26 @@ router.post('/addProject', (req, res) => {
 
         });
 
+    });
+});
+
+router.post("/addProject", (req, res) => {
+    let fbuid = req.body.fbuid;
+    let project_code = req.body.project_code;
+
+    db.Project.findOne({ project_code: project_code }, (err, foundProject) => {
+        db.User.findOne({ fbuid: fbuid }, (err, foundUser) => {
+            db.Student.findOneAndUpdate(
+                { user: foundUser._id },
+                { $push: { projects: foundProject._id } },
+                { new: true },
+                (err, updatedStudent) => {
+                    if (err) return next(err);
+                    // console.log(updated);
+                    res.json(updatedStudent);
+                }
+            );
+        });
     });
 });
 
