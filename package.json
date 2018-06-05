@@ -5,15 +5,12 @@
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "deploy": "git add . && git commit -m \"Deploy to heroku\" && git push heroku master",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^1.11.0"
-  },
   "dependencies": {
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
@@ -23,6 +20,7 @@
     "express": "^4.16.3",
     "mongoose": "^5.1.1",
     "morgan": "^1.9.0",
+    "nodemon": "^1.17.5",
     "serve-favicon": "^2.5.0"
   }
 }

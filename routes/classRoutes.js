@@ -80,6 +80,8 @@ router.post("/addClass", (req, res) => {
   let class_code = req.body.class_code;
 
   db.Class.findOne({ class_code: class_code }, (err, foundClass) => {
+    if (err) return next(err);
+    if(foundClass){
     db.User.findOne({ fbuid: fbuid }, (err, foundUser) => {
       db.Student.findOneAndUpdate(
         { user: foundUser._id },
@@ -99,6 +101,7 @@ router.post("/addClass", (req, res) => {
         }
       );
     });
+  }
   });
 });
 

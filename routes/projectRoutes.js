@@ -31,6 +31,7 @@ router.post("/addProject", (req, res) => {
     let project_code = req.body.project_code;
 
     db.Project.findOne({ project_code: project_code }, (err, foundProject) => {
+        if (foundProject){
         db.User.findOne({ fbuid: fbuid }, (err, foundUser) => {
             db.Student.findOneAndUpdate(
                 { user: foundUser._id },
@@ -43,6 +44,7 @@ router.post("/addProject", (req, res) => {
                 }
             );
         });
+    }
     });
 });
 
