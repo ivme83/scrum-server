@@ -5,5 +5,6 @@ module.exports = {
   Project: require("./Project"),
   Student: require("./Student"),
   Teacher: require("./Teacher"),
-  User: require("./User")
+  User: require("./User"),
+  Task: require("./Task")
 };
